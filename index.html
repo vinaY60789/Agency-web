@@ -88,6 +88,43 @@
 <footer class="py-6 text-center text-gray-400">
   © 2026 One Stop Agency | All Rights Reserved
 </footer>
+  <script>
+const scriptURL = "https://script.google.com/macros/s/AKfycbzLl92oEhcDiHTHmwM-W9Q6c1qkJzt2Fwygc_NXMChWGKaU2VIcFOtFhUz8ptC38rIc/exec; // यहाँ अपना असली Google Script URL डालें
+
+document.getElementById("bookingForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  // 1. फॉर्म का डेटा इकट्ठा करने के लिए FormData का इस्तेमाल करें
+  // इससे Google Script आसानी से डेटा पढ़ पाएगा
+  const formData = new FormData();
+  formData.append("name", document.getElementById("name").value);
+  formData.append("phone", document.getElementById("phone").value);
+  formData.append("date", document.getElementById("date").value);
+
+  // 2. सबमिट बटन को डिसेबल करें ताकि यूजर बार-बार क्लिक न करे
+  const submitBtn = e.target.querySelector('[type="submit"]');
+  if(submitBtn) submitBtn.disabled = true;
+
+  // 3. डेटा भेजने के लिए Fetch API
+  fetch(scriptURL, {
+    method: "POST",
+    mode: "no-cors", // Google Script के लिए यह ज़रूरी होता है ताकि CORS एरर न आए
+    body: formData
+  })
+  .then(() => {
+    alert("Booking Done 🚀");
+    document.getElementById("bookingForm").reset(); // बुकिंग के बाद फॉर्म खाली करने के लिए
+  })
+  .catch((error) => {
+    console.error("Error!", error);
+    alert("कुछ गड़बड़ हुई, कृपया दोबारा कोशिश करें।");
+  })
+  .finally(() => {
+    if(submitBtn) submitBtn.disabled = false; // बटन को वापस चालू करने के लिए
+  });
+});
+  </script>
+  
 
 </body>
 </html>
