@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ultra Premium Website</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body class="bg-[#0B0F19] text-white">
@@ -82,12 +83,24 @@
   <a href="https://wa.me/917895252570" class="bg-green-500 px-8 py-4 rounded-xl text-lg hover:scale-105 transition">
     Contact on WhatsApp
   </a>
+  <div data-aos="fade-up">
+    <form id="bookingForm">
+  <input id="name" placeholder="Name" required>
+  <input id="phone" placeholder="Phone" required>
+  <input id="date" type="date" required>
+
+  <button type="submit">Book Now</button>
+    </form>
 </section>
 
 <!-- 🧾 FOOTER -->
 <footer class="py-6 text-center text-gray-400">
   © 2026 One Stop Agency | All Rights Reserved
 </footer>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
   <script>
 const scriptURL = "https://script.google.com/macros/s/AKfycbzLl92oEhcDiHTHmwM-W9Q6c1qkJzt2Fwygc_NXMChWGKaU2VIcFOtFhUz8ptC38rIc/exec; // यहाँ अपना असली Google Script URL डालें
 
