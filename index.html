@@ -101,8 +101,6 @@ const scriptURL = "https://script.google.com/macros/s/AKfycbzLl92oEhcDiHTHmwM-W9
 document.getElementById("bookingForm").addEventListener("submit", function(e){
   e.preventDefault();
 
-  // 1. फॉर्म का डेटा इकट्ठा करने के लिए FormData का इस्तेमाल करें
-  // इससे Google Script आसानी से डेटा पढ़ पाएगा
   const formData = new FormData();
   formData.append("name", document.getElementById("name").value);
   formData.append("phone", document.getElementById("phone").value);
@@ -130,7 +128,10 @@ document.getElementById("bookingForm").addEventListener("submit", function(e){
     if(submitBtn) submitBtn.disabled = false; // बटन को वापस चालू करने के लिए
   });
 });
-    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
+  <script>
 const firebaseConfig = {
   apiKey: "AIzaSyDX5kvyCIeDD-IvTJAfwUd9i8tqOTTbLSA",
   authDomain: "whatsapp-booking-d07cf.firebaseapp.com",
