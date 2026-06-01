@@ -96,7 +96,7 @@
   AOS.init();
 </script>
   <script>
-const scriptURL = "https://script.google.com/macros/s/AKfycbzLl92oEhcDiHTHmwM-W9Q6c1qkJzt2Fwygc_NXMChWGKaU2VIcFOtFhUz8ptC38rIc/exec; // यहाँ अपना असली Google Script URL डालें
+const scriptURL = "https://script.google.com/macros/s/AKfycbzLl92oEhcDiHTHmwM-W9Q6c1qkJzt2Fwygc_NXMChWGKaU2VIcFOtFhUz8ptC38rIc/exec"; // यहाँ अपना असली Google Script URL डालें
 
 document.getElementById("bookingForm").addEventListener("submit", function(e){
   e.preventDefault();
@@ -129,37 +129,60 @@ document.getElementById("bookingForm").addEventListener("submit", function(e){
   });
 });
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-analytics.js"></script>
-  <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyDX5kvyCIeDD-IvTJAfwUd9i8tqOTTbLSA",
-  authDomain: "whatsapp-booking-d07cf.firebaseapp.com",
-  projectId: "whatsapp-booking-d07cf",
-  storageBucket: "whatsapp-booking-d07cf.firebasestorage.app",
-  messagingSenderId: "1051165796961",
-  appId: "1:1051165796961:web:21da0113f21317c2f81820",
-  measurementId: "G-2TFFXR8CZ2"
-};
-  </script>
-  <button onclick="openChat()">Chat 🤖</button>
 
-<div id="chatbox" style="display:none;">
-  <input id="msg">
-  <button onclick="send()">Send</button>
+<script>
+  // Firebase Configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDX5kvyCIeDD-IvTJAfwUd9i8tqOTTbLSA",
+    authDomain: "whatsapp-booking-d07cf.firebaseapp.com",
+    projectId: "whatsapp-booking-d07cf",
+    storageBucket: "whatsapp-booking-d07cf.firebasestorage.app",
+    messagingSenderId: "1051165796961",
+    appId: "1:1051165796961:web:21da0113f21317c2f81820",
+    measurementId: "G-2TFFXR8CZ2"
+  };
+  
+  // Firebase Initialize (Ab yeh bracket ke bahar hai)
+  firebase.initializeApp(firebaseConfig);
+</script>
+
+<button onclick="openChat()" style="position: fixed; bottom: 20px; right: 20px; bg-purple-600; z-index: 1000;" class="bg-purple-600 text-white px-4 py-3 rounded-full shadow-lg hover:scale-105 transition">
+  Chat 🤖
+</button>
+
+<div id="chatbox" style="display: none; position: fixed; bottom: 80px; right: 20px; width: 300px; height: 400px; background: #1f2937; border: 1px solid #374151; border-radius: 12px; p-4; z-index: 1000; padding: 15px;" class="shadow-2xl flex flex-col justify-between">
+  <div class="text-sm text-gray-300">Chatbot Room</div>
+  <div class="flex gap-2 mt-auto">
+    <input id="msg" class="w-full bg-gray-700 text-white px-3 py-2 rounded-lg outline-none text-sm" placeholder="Type a message...">
+    <button onclick="send()" class="bg-green-500 text-white px-4 py-2 rounded-lg text-sm hover:bg-green-600">Send</button>
+  </div>
 </div>
 
 <script>
-function openChat(){
-  let box = document.getElementById("chatbox");
-  box.style.display = box.style.display === "none" ? "block" : "none";
+  // Open/Close Chatbox Function
+  function openChat() {
+    let box = document.getElementById("chatbox");
+    if (box.style.display === "none" || box.style.display === "") {
+      box.style.display = "flex"; // flex use kiya taaki layout sahi rahe
+    } else {
+      box.style.display = "none";
+    }
+  }
 
-
-function send(){
-  alert("Backend connect करना पड़ेगा");
-}
+  // Send Message Function
+  function send() {
+    let msgInput = document.getElementById("msg");
+    let message = msgInput.value;
+    
+    if (message.trim() !== "") {
+      alert("Aapka Message: " + message); // Yahan aap apna Firebase logic jod sakte hain
+      msgInput.value = ""; // Send karne ke baad input khali karne ke liye
+    } else {
+      alert("Kripya kuch type karein!");
+    }
+  }
 </script>
   
-
 </body>
 </html>
