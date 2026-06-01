@@ -136,7 +136,34 @@ document.getElementById("bookingForm").addEventListener("submit", function(e){
     if(submitBtn) submitBtn.disabled = false; // बटन को वापस चालू करने के लिए
   });
 });
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDX5kvyCIeDD-IvTJAfwUd9i8tqOTTbLSA",
+  authDomain: "whatsapp-booking-d07cf.firebaseapp.com",
+  projectId: "whatsapp-booking-d07cf",
+  storageBucket: "whatsapp-booking-d07cf.firebasestorage.app",
+  messagingSenderId: "1051165796961",
+  appId: "1:1051165796961:web:21da0113f21317c2f81820",
+  measurementId: "G-2TFFXR8CZ2"
+};
   </script>
+  <button onclick="openChat()">Chat 🤖</button>
+
+<div id="chatbox" style="display:none;">
+  <input id="msg">
+  <button onclick="send()">Send</button>
+</div>
+
+<script>
+function openChat(){
+  let box = document.getElementById("chatbox");
+  box.style.display = box.style.display === "none" ? "block" : "none";
+}
+
+function send(){
+  alert("Backend connect करना पड़ेगा");
+}
+</script>
   
 
 </body>
